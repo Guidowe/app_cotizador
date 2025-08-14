@@ -3,7 +3,6 @@ import streamlit as st
 import pandas as pd
 from streamlit_autorefresh import st_autorefresh
 from streamlit_option_menu import option_menu
-from streamlit_cookies_manager import EncryptedCookieManager
 import time
 
 def show_page_cotiz_prev():

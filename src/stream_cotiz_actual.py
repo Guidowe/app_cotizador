@@ -1,14 +1,11 @@
-from services.supabase_service import get_previous_cotizations
 import streamlit as st
 import pandas as pd
 from services.supabase_service import save_cotization
 from services.supabase_service import get_cotization_number
-
 from funciones.pdf_generator import generate_pdf
 from datetime import datetime
 from services.supabase_service import save_cotization
 from services.supabase_service import get_cotization_number
-
 import time
 from datetime import datetime
 
