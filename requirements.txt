@@ -4,3 +4,4 @@ fpdf
 pandas
 streamlit_autorefresh
 streamlit_option_menu
+openpyxl
