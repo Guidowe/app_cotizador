@@ -4,7 +4,7 @@ import os
 def generate_pdf(cotiz_number, client_info, concepts, total_amount):
     pdf = FPDF()
     pdf.add_page()
-    logo_path = os.path.join(os.getcwd(), "src", "img", "logo.png")
+    logo_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../img/logo.png"))
     if os.path.exists(logo_path):
         pdf.image(logo_path, x=10, y=8, w=30)
         pdf.set_xy(10, 25)
