@@ -12,11 +12,11 @@ from streamlit_option_menu import option_menu
 refresh_interval_ms = 60 * 1000  # 30 seconds in milliseconds
 count = st_autorefresh(interval=refresh_interval_ms, limit=None, key="auto-refresh")
 
-col1, col2 = st.columns([1, 6])
+col1, col2 = st.columns([7, 1])
 with col1:
-    st.image("src/img/logo_dgm.jpg", width=80)
+    st.title("DGM - Quotation System")
 with col2:
-    st.markdown("<h1 style='margin-top: 25px;'>DGM - Quotation System</h1>", unsafe_allow_html=True)
+    st.image("src/img/logo_dgm.jpg", use_column_width=True)
 
 
 USERNAMES = ["DASSA", "Facu","Guido"]
