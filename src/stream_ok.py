@@ -14,7 +14,14 @@ count = st_autorefresh(interval=refresh_interval_ms, limit=None, key="auto-refre
 
 col1, col2 = st.columns([7, 1])
 with col1:
-    st.title("DGM - Quotation System")
+        st.markdown(
+        """
+        <div style="background-color:#43b02a;padding:20px 10px 10px 10px;border-radius:8px;">
+            <h1 style="color:white;margin-bottom:0;">DGM - Quotation System</h1>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 with col2:
     st.image("src/img/logo_dgm.jpg", use_container_width =True)
 
@@ -33,22 +40,7 @@ page_selection = option_menu(
             icons=["arrow-down-circle", "arrow-up-circle"],   
             menu_icon="cast",  
             default_index=0, 
-            orientation="horizontal",
-            styles= {
-                "container": {"padding": "0!important", "background-color": "#002b36"},
-                "icon": {"color": "white", "font-size": "18px"},
-                "nav-link": {
-                "font-size": "18px",
-                "text-align": "center",
-                "margin": "0px",
-                "color": "white",
-                },
-            "nav-link-selected": {
-                "background-color": "#43b02a",
-            "color": "white",
-            },
-            }
-            )
+            orientation="horizontal")
 
 if page_selection == "Create Quote":
     stream_cotiz_actual.show_page_cotizar()
