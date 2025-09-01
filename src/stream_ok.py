@@ -26,13 +26,13 @@ def login(username, password):
 
 page_selection = option_menu(
             None,  # No menu title
-            ["Quote", "Previous quotes"],  # List of menu items
+            ["Create Quote", "Previous quotations"],  # List of menu items
             icons=["arrow-down-circle", "arrow-up-circle"],   
             menu_icon="cast",  
             default_index=0, 
             orientation="horizontal")
 
-if page_selection == "Quote":
+if page_selection == "Create Quote":
     stream_cotiz_actual.show_page_cotizar()
-if page_selection == "Previous quotes":
+if page_selection == "Previous quotations":
     stream_cotiz_previas.show_page_cotiz_prev()
