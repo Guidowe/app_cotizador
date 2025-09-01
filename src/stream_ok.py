@@ -16,7 +16,7 @@ col1, col2 = st.columns([7, 1])
 with col1:
     st.title("DGM - Quotation System")
 with col2:
-    st.image("src/img/logo_dgm.jpg", use_column_width=True)
+    st.image("src/img/logo_dgm.jpg", use_container_width =True)
 
 
 USERNAMES = ["DASSA", "Facu","Guido"]
