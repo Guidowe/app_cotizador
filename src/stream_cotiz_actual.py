@@ -23,9 +23,9 @@ def show_page_cotizar():
 
     with col1:
     # --- Información del cliente con autocompletado ---
-        st.subheader("EMPRESA CLIENTE")
+        st.subheader("CLIENT")
         empresa_list = clients_df["EMPRESA CLIENTE"].astype(str).unique().tolist()
-        empresa_cliente = st.selectbox("EMPRESA CLIENTE", empresa_list, key="empresa_cliente")
+        empresa_cliente = st.selectbox("Select Client", empresa_list, key="empresa_cliente")
 
     # Buscar datos del cliente seleccionado
         cliente_info = clients_df[clients_df["EMPRESA CLIENTE"] == empresa_cliente].iloc[0] if empresa_cliente in clients_df["EMPRESA CLIENTE"].values else None
@@ -33,19 +33,17 @@ def show_page_cotizar():
         contacto_cliente = cliente_info["CONTACTO CLIENTE"] if cliente_info is not None else ""
         referencia_cliente = cliente_info["REFERENCIA CLIENTE"] if cliente_info is not None else ""
 
-        st.subheader("CONTACTO CLIENTE")
-        st.text_input("CONTACTO CLIENTE", value=contacto_cliente, key="contacto_cliente", disabled=True)
-        st.subheader("REFERENCIA CLIENTE")
-        st.text_input("REFERENCIA CLIENTE", value=referencia_cliente, key="referencia_cliente", disabled=True)
+        st.text_input("Client mail", value=contacto_cliente, key="contacto_cliente", disabled=True)
+        st.text_input("Reference Client", value=referencia_cliente, key="referencia_cliente", disabled=True)
 
     with col2:
 
     # --- Lista de conceptos editable ---
-        st.subheader("CONCEPTOS A COTIZAR")
+        st.subheader("ITEMS TO QUOTE")
 
         tipos_disponibles = conceptos_df["type"].unique().tolist()
         tipos_seleccionados = st.multiselect(
-        "Selecciona los conceptos a agregar",
+        "Pick items to be quoted",
         tipos_disponibles
         )
 
@@ -61,34 +59,34 @@ def show_page_cotizar():
                 key="conceptos_editor"
             )
             total = conceptos_seleccionados_df["Amount"].sum()
-            st.write(f"**Total cotizado:** ${total:,.2f}")
+            st.write(f"**Total quoted:** ${total:,.2f}")
         else:
-            st.info("Selecciona al menos un concepto para editar.")
+            st.info("Pick at least one item to quote")
 
     # --- Términos y firma ---
     n_cotizacion = get_cotization_number()
     cotiz_formato = f"# {int(n_cotizacion):04d}"
     fecha = datetime.now().strftime("%d/%m/%Y")
-    st.write(f"**N° DE COTIZACIÓN:** # {int(n_cotizacion):04d}")
-    st.write(f"**FECHA:** {fecha}")
-    firma_usuario = st.text_input("FIRMA (usuario)")
+    st.write(f"**Quote N°:** # {int(n_cotizacion):04d}")
+    st.write(f"**Date:** {fecha}")
+    firma_usuario = st.text_input("Signature (user)")
 
     # --- Botón para generar cotización ---
-    if st.button("Generar Cotización"):
+    if st.button("Generate quote"):
         if empresa_cliente and contacto_cliente and referencia_cliente and not conceptos_seleccionados_df.empty:
             pdf_bytes = generate_pdf(cotiz_formato,empresa_cliente, conceptos_seleccionados_df, total)
             save_cotization(n_cotizacion,fecha,empresa_cliente,total)
 
-            st.success("¡Cotización generada correctamente!")
+            st.success("Quote generated successfully!")
             st.download_button(
-            label="Descargar PDF de Cotización",
+            label="Download PDF",
             data=pdf_bytes,
-            file_name=f"Cotizacion_{n_cotizacion}.pdf",
+            file_name=f"Quote_{n_cotizacion}.pdf",
             mime="application/pdf"
         )
 
         else:
-            st.error("Por favor, completa todos los campos y revisa la lista de conceptos.")
+            st.error("Please complete all fields and check the items to be quoted.")
 if __name__ == "__main__":
     while True:
         show_page_cotizar()

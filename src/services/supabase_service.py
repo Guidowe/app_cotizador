@@ -1,9 +1,11 @@
 from supabase import create_client, Client
 import pandas as pd
+#from tokens import url, key
+#supabase_client = create_client(url, key)
+import os
+url = os.getenv("url_supabase")
+key = os.getenv("key_supabase")
 
-# Initialize Supabase client
-url: str = "https://qwmvlhjgqrrxecefcldm.supabase.co"
-key: str = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF3bXZsaGpncXJyeGVjZWZjbGRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQzOTUxNTIsImV4cCI6MjA2OTk3MTE1Mn0.2US4PiD-IauMJp7JMCEnvaw3Q5gb--D6dpYIHX4Qpug"
 supabase: Client = create_client(url, key)
 
 def get_previous_cotizations():

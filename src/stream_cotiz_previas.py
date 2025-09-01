@@ -7,7 +7,7 @@ import time
 
 def show_page_cotiz_prev():
     cotizaciones_previas = get_previous_cotizations()
-    st.write("**Cotizaciones Previas:**")
+    st.write("**Previous quotes:**")
     st.dataframe(cotizaciones_previas[["cotizacion","empresa_cliente", "total"]])
 
 if __name__ == "__main__":
