@@ -23,7 +23,7 @@ def generate_pdf(cotiz_number, client_info, concepts, total_amount):
     pdf.ln(5)
     # Print DataFrame as a table
     if hasattr(concepts, "columns") and hasattr(concepts, "iterrows"):
-        col_widths = [40, 35, 90] if len(concepts.columns) == 3 else [60] * len(concepts.columns)
+        col_widths = [60, 35, 90] if len(concepts.columns) == 3 else [60] * len(concepts.columns)
         pdf.set_fill_color(200, 200, 200)
         pdf.set_font("Arial", "B", 12)
         for i, col in enumerate(concepts.columns):
@@ -31,9 +31,19 @@ def generate_pdf(cotiz_number, client_info, concepts, total_amount):
         pdf.ln()
         pdf.set_font("Arial", "", 11)
         for _, row in concepts.iterrows():
-            for i, item in enumerate(row):
-                pdf.cell(col_widths[i], 10, str(item), border=1, align="L")
-            pdf.ln()
+            x_start = pdf.get_x()
+            y_start = pdf.get_y()
+            # Multi_cell for the first column (type)
+            pdf.multi_cell(col_widths[0], 10, str(row[0]), border=1)
+            # Calculate height used by multi_cell
+            y_end = pdf.get_y()
+            cell_height = y_end - y_start
+            # Move to the right for the next cells
+            pdf.set_xy(x_start + col_widths[0], y_start)
+            # Print the rest of the columns with the same row height
+            for i, item in enumerate(row[1:], start=1):
+                pdf.cell(col_widths[i], cell_height, str(item), border=1)
+            pdf.ln(cell_height)
     else:
         pdf.cell(0, 10, str(concepts), ln=True)
     pdf.ln(5)
