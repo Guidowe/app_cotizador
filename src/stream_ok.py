@@ -24,7 +24,12 @@ with col1:
     )
 with col2:
     st.image("src/img/logo_dgm.jpg", use_container_width =True)
-
+st.markdown(
+    """
+    <div style="background-color:white;height:12px;border-radius:6px;margin-bottom:10px;"></div>
+    """,
+    unsafe_allow_html=True
+)
 
 USERNAMES = ["DASSA", "Facu","Guido"]
 PASSWORDS = ["DASSA3", "123","45s62a"]
