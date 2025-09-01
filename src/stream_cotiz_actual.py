@@ -17,7 +17,7 @@ clients_df = pd.read_excel(CLIENTS_PATH)
 conceptos_df = pd.read_excel(CONCEPTS_PATH)
 
 def show_page_cotizar():
-    st.title("Cotizador")
+    st.title("Create a new quote")
 
     col1, col2 = st.columns(2)
 

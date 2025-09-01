@@ -12,9 +12,12 @@ from streamlit_option_menu import option_menu
 refresh_interval_ms = 60 * 1000  # 30 seconds in milliseconds
 count = st_autorefresh(interval=refresh_interval_ms, limit=None, key="auto-refresh")
 
-# Estilo
-#with open("src/styles.css") as f:
-#    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+col1, col2 = st.columns([1, 6])
+with col1:
+    st.image("src/img/logo_dgm.jpg", width=60)
+with col2:
+    st.markdown("<h1 style='margin-top: 25px;'>DGM - Quotation System</h1>", unsafe_allow_html=True)
+
 
 USERNAMES = ["DASSA", "Facu","Guido"]
 PASSWORDS = ["DASSA3", "123","45s62a"]
