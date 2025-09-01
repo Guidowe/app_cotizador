@@ -9,17 +9,17 @@ def generate_pdf(cotiz_number, client_info, concepts, total_amount):
         pdf.image(logo_path, x=10, y=8, w=30)
         pdf.set_xy(10, 25)
     pdf.set_font("Arial", "B", 16)
-    pdf.cell(0, 15, "COTIZACIÓN", ln=True, align="C")
+    pdf.cell(0, 15, "Quotation", ln=True, align="C")
     pdf.ln(5)
     pdf.set_font("Arial", "", 12)
-    pdf.cell(0, 10, f"Cotización: {cotiz_number}", ln=True)
+    pdf.cell(0, 10, f"Quitation: {cotiz_number}", ln=True)
     # Print client info nicely
     if isinstance(client_info, dict):
-        pdf.cell(0, 10, f"Empresa: {client_info.get('empresa', '')}", ln=True)
-        pdf.cell(0, 10, f"Contacto: {client_info.get('contacto', '')}", ln=True)
-        pdf.cell(0, 10, f"Referencia: {client_info.get('referencia', '')}", ln=True)
+        pdf.cell(0, 10, f"Client: {client_info.get('empresa', '')}", ln=True)
+        pdf.cell(0, 10, f"Contact: {client_info.get('contacto', '')}", ln=True)
+        pdf.cell(0, 10, f"Reference: {client_info.get('referencia', '')}", ln=True)
     else:
-        pdf.cell(0, 10, f"Cliente: {str(client_info)}", ln=True)
+        pdf.cell(0, 10, f"Client: {str(client_info)}", ln=True)
     pdf.ln(5)
     # Print DataFrame as a table
     if hasattr(concepts, "columns") and hasattr(concepts, "iterrows"):
@@ -41,13 +41,13 @@ def generate_pdf(cotiz_number, client_info, concepts, total_amount):
     pdf.cell(0, 10, f"Total: ${total_amount:,.2f}", ln=True, align="R")
     pdf.ln(10)
     pdf.set_font("Arial", "I", 10)
-    TERMINOS = "* Válido por 30 días."
-    pdf.multi_cell(0, 8, f"TÉRMINOS:\n{TERMINOS}")
+    TERMINOS = "* Valid for 30 days."
+    pdf.multi_cell(0, 8, f"Terms:\n{TERMINOS}")
     pdf.ln(10)
     pdf.set_font("Arial", "B", 12)
-    pdf.cell(0, 8, "FIRMA:", ln=True)
+    pdf.cell(0, 8, "Signature:", ln=True)
     pdf.set_font("Arial", "", 12)
-    pdf.cell(0, 8, "POR DIEGO AGUIRRE", ln=True)
+    pdf.cell(0, 8, "By DIEGO AGUIRRE", ln=True)
     pdf.cell(0, 8, "CEO DGM FLORIDA", ln=True)
 
     return pdf.output(dest='S').encode('latin1')  # Return PDF as bytes
