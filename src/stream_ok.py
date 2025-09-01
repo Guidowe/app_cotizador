@@ -33,7 +33,22 @@ page_selection = option_menu(
             icons=["arrow-down-circle", "arrow-up-circle"],   
             menu_icon="cast",  
             default_index=0, 
-            orientation="horizontal")
+            orientation="horizontal",
+            styles= {
+                "container": {"padding": "0!important", "background-color": "#002b36"},
+                "icon": {"color": "white", "font-size": "18px"},
+                "nav-link": {
+                "font-size": "18px",
+                "text-align": "center",
+                "margin": "0px",
+                "color": "white",
+                },
+            "nav-link-selected": {
+                "background-color": "#43b02a",
+            "color": "white",
+            },
+            }
+            )
 
 if page_selection == "Create Quote":
     stream_cotiz_actual.show_page_cotizar()
