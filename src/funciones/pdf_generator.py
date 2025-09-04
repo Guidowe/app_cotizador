@@ -12,7 +12,7 @@ def generate_pdf(cotiz_number, client_info, concepts, total_amount):
     pdf.cell(0, 15, "Quotation", ln=True, align="C")
     pdf.ln(5)
     pdf.set_font("Arial", "", 12)
-    pdf.cell(0, 10, f"Quitation: {cotiz_number}", ln=True)
+    pdf.cell(0, 10, f"Quotation: {cotiz_number}", ln=True)
     # Print client info nicely
     if isinstance(client_info, dict):
         pdf.cell(0, 10, f"Client: {client_info.get('empresa', '')}", ln=True)
