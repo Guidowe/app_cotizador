@@ -76,8 +76,8 @@ def show_page_cotizar():
     if st.button("Generate quote"):
         if empresa_cliente and contacto_cliente and referencia_cliente and seller and refe_quote and not conceptos_seleccionados_df.empty:
             pdf_bytes = generate_pdf(cotiz_formato,empresa_cliente,fecha,seller,refe_quote, conceptos_seleccionados_df, total)
-            save_cotization(n_cotizacion,fecha,empresa_cliente,total)
-            save_cotization_detail(n_cotizacion,fecha,empresa_cliente,conceptos_seleccionados_df)
+            save_cotization(n_cotizacion,fecha,empresa_cliente,total,refe_quote,seller)
+            save_cotization_detail(n_cotizacion,fecha,empresa_cliente,conceptos_seleccionados_df,refe_quote,seller)
 
             st.success("Quote generated successfully!")
             st.download_button(

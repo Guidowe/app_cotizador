@@ -23,15 +23,17 @@ def get_cotization_number():
     cotizacion_actual = cotizaciones_previas.iloc[-1]["quotation"]+1
     return cotizacion_actual
 
-def save_cotization(in_cotizacion,in_fecha,in_empresa_cliente,in_total):
+def save_cotization(in_cotizacion,in_fecha,in_empresa_cliente,in_total,refe_quote,seller):
     response = supabase.table('quotations').insert({
         'quotation': int(in_cotizacion),
         'client': in_empresa_cliente,
         'date': in_fecha,
-        'total': float(in_total)
+        'total': float(in_total),
+        'reference_quote': refe_quote,
+        'seller': seller
     }).execute()
 
-def save_cotization_detail(in_cotizacion, in_fecha, in_empresa_cliente, in_conceptos_seleccionados_df):
+def save_cotization_detail(in_cotizacion, in_fecha, in_empresa_cliente, in_conceptos_seleccionados_df,refe_quote,seller):
     # Prepare a list of dicts for bulk insert
     rows = []
     for _, row in in_conceptos_seleccionados_df.iterrows():
@@ -41,7 +43,9 @@ def save_cotization_detail(in_cotizacion, in_fecha, in_empresa_cliente, in_conce
             'date': in_fecha,
             'type': str(row['type']),
             'Amount': float(row['Amount']),
-            'description': str(row['description'])
+            'description': str(row['description']),
+            'reference_quote': refe_quote,
+            'seller': seller
         })
     response = supabase.table('quotations_detail').insert(rows).execute()
     return response
