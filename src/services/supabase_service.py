@@ -59,7 +59,7 @@ def save_concept(Code,account,type,amount,description):
     }).execute()
     return response
 
-def save_client(in_empresa_cliente,in_contacto_cliente,in_referencia_cliente):
+def save_new_client(in_empresa_cliente,in_contacto_cliente,in_referencia_cliente):
     response = supabase.table('clients').insert({
         'client': in_empresa_cliente,
         'contact': in_contacto_cliente,

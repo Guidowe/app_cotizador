@@ -11,7 +11,7 @@ def show_page_add_client():
 
     if st.button("Save client in database"):
         if client_name and client_contact and client_reference:
-            save_client(client_name,client_contact,client_reference)
+            save_new_client(client_name,client_contact,client_reference)
             st.success("Client saved successfully!")            
         else:
             st.error("Please complete all fields")
