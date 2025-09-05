@@ -1,7 +1,7 @@
 from fpdf import FPDF
 import os   
 
-def generate_pdf(cotiz_number, client_info, date,concepts, total_amount):
+def generate_pdf(cotiz_number, client_info, date,seller,refe_quote,concepts, total_amount):
     pdf = FPDF()
     pdf.add_page()
     logo_path = os.path.join(os.path.dirname(__file__), "../img/logo_dgm.jpg")
@@ -13,15 +13,15 @@ def generate_pdf(cotiz_number, client_info, date,concepts, total_amount):
     pdf.ln(5)
     pdf.set_font("Arial", "", 12)
     pdf.cell(0, 10, f"Quotation: {cotiz_number}", ln=True)
+    pdf.cell(0, 10, f"Date: {str(date)}", ln=True)
+    pdf.cell(0, 10, f"Seller: {str(seller)}", ln=True)
     # Print client info nicely
     if isinstance(client_info, dict):
         pdf.cell(0, 10, f"Client: {client_info.get('empresa', '')}", ln=True)
-        pdf.cell(0, 10, f"Contact: {client_info.get('contacto', '')}", ln=True)
-        pdf.cell(0, 10, f"Reference: {client_info.get('referencia', '')}", ln=True)
     else:
         pdf.cell(0, 10, f"Client: {str(client_info)}", ln=True)
+    pdf.cell(0, 10, f"Reference: {str(refe_quote)}", ln=True)
     pdf.ln(5)
-    pdf.cell(0, 10, f"Date: {str(date)}", ln=True)
     # Print DataFrame as a table
     if hasattr(concepts, "columns") and hasattr(concepts, "iterrows"):
         col_widths = [60, 35, 90] if len(concepts.columns) == 3 else [60] * len(concepts.columns)

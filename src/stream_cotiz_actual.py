@@ -69,12 +69,13 @@ def show_page_cotizar():
     fecha = datetime.now().strftime("%d/%m/%Y")
     st.write(f"**Quote N°:** # {int(n_cotizacion):04d}")
     st.write(f"**Date:** {fecha}")
-    firma_usuario = st.text_input("Signature (user)")
+    refe_quote = st.text_input("Enter a reference for this quotation")
+    seller = st.text_input("Seller. Specify who is making the quotation")
 
     # --- Botón para generar cotización ---
     if st.button("Generate quote"):
-        if empresa_cliente and contacto_cliente and referencia_cliente and not conceptos_seleccionados_df.empty:
-            pdf_bytes = generate_pdf(cotiz_formato,empresa_cliente,fecha, conceptos_seleccionados_df, total)
+        if empresa_cliente and contacto_cliente and referencia_cliente and seller and refe_quote and not conceptos_seleccionados_df.empty:
+            pdf_bytes = generate_pdf(cotiz_formato,empresa_cliente,fecha,seller,refe_quote, conceptos_seleccionados_df, total)
             save_cotization(n_cotizacion,fecha,empresa_cliente,total)
             save_cotization_detail(n_cotizacion,fecha,empresa_cliente,conceptos_seleccionados_df)
 
