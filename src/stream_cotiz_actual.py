@@ -15,8 +15,9 @@ from datetime import datetime
 CONCEPTS_PATH = "src/data/MAGAYA Products and Services list.xlsx"
 #clients_df = pd.read_excel(CLIENTS_PATH)
 conceptos_df = pd.read_excel(CONCEPTS_PATH)
-clients_df = retrieve_clients()
+
 def show_page_cotizar():
+    clients_df = retrieve_clients()
     st.title("Create a new quote")
 
     col1, col2 = st.columns(2)
