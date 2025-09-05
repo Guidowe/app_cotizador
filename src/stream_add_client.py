@@ -1,5 +1,5 @@
 import streamlit as st
-from services.supabase_service import save_client
+from services.supabase_service import save_new_client
 import time
 
 def show_page_add_client():
