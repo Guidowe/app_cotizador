@@ -9,7 +9,7 @@ import time
 def show_page_cotiz_prev():
     cotizaciones_previas = get_previous_cotizations()
     st.write("**Previous quotations:**")
-    st.dataframe(cotizaciones_previas[["quotation","reference_quote","client","date", "total"]])
+    st.dataframe(cotizaciones_previas[["quotation","reference_quote","client","date"]])
     st.write("**Search for details of a specific quotation:**")
     #quotations_available = cotizaciones_previas["quotation"].unique().tolist()
     numero = st.text_input("Pick quotation by number")
