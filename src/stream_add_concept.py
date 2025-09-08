@@ -22,7 +22,7 @@ def show_page_add_concept():
                 st.error("Please complete all fields")
     with col2:
         existing_concepts = retrieve_concepts()
-        st.title("Existent Concepts")
+        st.title("Existing Concepts")
         st.dataframe(existing_concepts)
 
 if __name__ == "__main__":

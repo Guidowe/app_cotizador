@@ -20,7 +20,7 @@ def show_page_add_client():
                 st.error("Please complete all fields")
     with col2:
         existing_clients = retrieve_clients()
-        st.title("Existent Clients")
+        st.title("Existing Clients")
         st.dataframe(existing_clients)
 
 if __name__ == "__main__":
