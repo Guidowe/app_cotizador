@@ -23,7 +23,11 @@ def show_page_add_concept():
     with col2:
         existing_concepts = retrieve_concepts()
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         st.title("Existing Concepts")
+=======
+        st.title("Existent Concepts")
+>>>>>>> Stashed changes
 =======
         st.title("Existent Concepts")
 >>>>>>> Stashed changes

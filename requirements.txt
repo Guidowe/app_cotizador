@@ -7,7 +7,11 @@ streamlit_option_menu
 openpyxl
 yaml
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 streamlit_authenticator==0.4.2
+=======
+streamlit_authenticator==0.4.2
+>>>>>>> Stashed changes
 =======
 streamlit_authenticator==0.4.2
 >>>>>>> Stashed changes

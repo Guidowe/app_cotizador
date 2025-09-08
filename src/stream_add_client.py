@@ -21,7 +21,11 @@ def show_page_add_client():
     with col2:
         existing_clients = retrieve_clients()
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         st.title("Existing Clients")
+=======
+        st.title("Existent Clients")
+>>>>>>> Stashed changes
 =======
         st.title("Existent Clients")
 >>>>>>> Stashed changes
