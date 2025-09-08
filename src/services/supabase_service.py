@@ -1,10 +1,10 @@
 from supabase import create_client, Client
 import pandas as pd
-from tokens import url, key
+#from tokens import url, key
 
-#import os
-#url = os.getenv("url_supabase")
-#key = os.getenv("key_supabase")
+import os
+url = os.getenv("url_supabase")
+key = os.getenv("key_supabase")
 
 supabase: Client = create_client(url, key)
 
