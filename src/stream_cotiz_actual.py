@@ -6,18 +6,20 @@ from datetime import datetime
 from services.supabase_service import save_cotization
 from services.supabase_service import save_cotization_detail
 from services.supabase_service import retrieve_clients
+from services.supabase_service import retrieve_concepts
 import time
 from datetime import datetime
 
 
 # Load client data from Excel
 #CLIENTS_PATH = "src/data/Base de datos cientes - contactos MAGAYA.xlsx"
-CONCEPTS_PATH = "src/data/MAGAYA Products and Services list.xlsx"
+#CONCEPTS_PATH = "src/data/MAGAYA Products and Services list.xlsx"
 #clients_df = pd.read_excel(CLIENTS_PATH)
-conceptos_df = pd.read_excel(CONCEPTS_PATH)
+#conceptos_df = pd.read_excel(CONCEPTS_PATH)
 
 def show_page_cotizar():
     clients_df = retrieve_clients()
+    conceptos_df = retrieve_concepts()
     st.title("Create a new quote")
 
     col1, col2 = st.columns(2)

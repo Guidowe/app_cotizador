@@ -1,31 +1,32 @@
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 from fpdf import FPDF
+=======
+from fpdf import FPDF, import_page
+>>>>>>> Stashed changes
+=======
+from fpdf import FPDF, import_page
+>>>>>>> Stashed changes
+=======
+from fpdf import FPDF, import_page
+>>>>>>> Stashed changes
 import os   
 
 def generate_pdf(cotiz_number, client_info, date,seller,refe_quote,concepts, total_amount):
     pdf = FPDF()
     pdf.add_page()
-    logo_path = os.path.join(os.path.dirname(__file__), "../img/membrete_grande.jpg")
+    logo_path = os.path.join(os.path.dirname(__file__), "../img/logo_dgm.jpg")
     if os.path.exists(logo_path):
-        pdf.image(logo_path, x=10, y=8, w=120, h=30) #10cm x 2cm
-    # Add "Quotation" info at the same height, aligned right
-    pdf.set_xy(115, 10)  # Adjust x for right alignment (A4 width is 210mm)
+        pdf.image(logo_path, x=10, y=8, w=30)
+        pdf.set_xy(10, 25)
     pdf.set_font("Arial", "B", 16)
-    pdf.set_text_color(67, 190, 244)  # #43bef4
-    pdf.cell(80, 10, "Quotation", ln=True, align="R")
-    pdf.set_font("Arial", "B", 14)
-    pdf.set_text_color(0, 0, 0)  # Black for number and date
-    pdf.set_xy(115, 20)  # Adjust x for right alignment (A4 width is 210mm)
-    pdf.cell(80, 10, str(cotiz_number), ln=True, align="R")
-    pdf.set_xy(115, 30)  # Adjust x for right alignment (A4 width is 210mm)
-    pdf.cell(80, 10, str(date), ln=True, align="R")
-    pdf.set_xy(115, 40)  # Adjust x for right alignment (A4 width is 210mm)
-    pdf.set_text_color(0, 0, 0)  # Reset to black
-
-    pdf.set_xy(10, 45)  # Move below the header
+    pdf.cell(0, 15, "Quotation", ln=True, align="C")
+    pdf.ln(5)
     pdf.set_font("Arial", "", 12)
-    #pdf.cell(0, 10, f"Quotation: {cotiz_number}", ln=True)
-    #pdf.cell(0, 10, f"Date: {str(date)}", ln=True)
-    #pdf.cell(0, 10, f"Seller: {str(seller)}", ln=True)
+    pdf.cell(0, 10, f"Quotation: {cotiz_number}", ln=True)
+    pdf.cell(0, 10, f"Date: {str(date)}", ln=True)
+    pdf.cell(0, 10, f"Seller: {str(seller)}", ln=True)
     # Print client info nicely
     if isinstance(client_info, dict):
         pdf.cell(0, 10, f"Client: {client_info.get('empresa', '')}", ln=True)
@@ -67,12 +68,9 @@ def generate_pdf(cotiz_number, client_info, date,seller,refe_quote,concepts, tot
     pdf.multi_cell(0, 8, f"Terms:\n{TERMINOS}")
     pdf.ln(10)
     pdf.set_font("Arial", "B", 12)
-    #pdf.cell(0, 8, "Signature:", ln=True)
-    #pdf.set_font("Arial", "", 12)
-    frima_path = os.path.join(os.path.dirname(__file__), "../img/firma_grande.jpg")
-    if os.path.exists(frima_path):
-        pdf.image(frima_path, w=90, h=60)
-    #pdf.cell(0, 8, "By DIEGO AGUIRRE", ln=True)
-    #pdf.cell(0, 8, "CEO DGM FLORIDA", ln=True)
+    pdf.cell(0, 8, "Signature:", ln=True)
+    pdf.set_font("Arial", "", 12)
+    pdf.cell(0, 8, "By DIEGO AGUIRRE", ln=True)
+    pdf.cell(0, 8, "CEO DGM FLORIDA", ln=True)
 
     return pdf.output(dest='S').encode('latin1')  # Return PDF as bytes

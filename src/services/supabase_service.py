@@ -1,7 +1,7 @@
 from supabase import create_client, Client
 import pandas as pd
 #from tokens import url, key
-#supabase_client = create_client(url, key)
+
 import os
 url = os.getenv("url_supabase")
 key = os.getenv("key_supabase")
@@ -75,3 +75,8 @@ def retrieve_clients():
     clients_supabase = supabase.table("clients").select("*").execute()
     clients = pd.DataFrame(clients_supabase.data)
     return clients
+
+def retrieve_concepts():
+    concepts_supabase = supabase.table("services").select("*").execute()
+    concepts = pd.DataFrame(concepts_supabase.data)
+    return concepts

@@ -1,9 +1,9 @@
 from services.supabase_service import get_previous_cotizations
 from services.supabase_service import get_previous_cotizations_detail
+from funciones import pdf_generator
+
 import streamlit as st
 import pandas as pd
-from streamlit_autorefresh import st_autorefresh
-from streamlit_option_menu import option_menu
 import time
 
 def show_page_cotiz_prev():
@@ -16,6 +16,16 @@ def show_page_cotiz_prev():
     if not numero.strip() == "":
         previous_cotization_detail = get_previous_cotizations_detail(numero)
         st.dataframe(previous_cotization_detail[["quotation","client","date","type","Amount","description"]])
+        if st.button("PENDIENTE: Regenerate PDF"):
+            #pdf_reg = pdf_generator.generate_pdf(
+                #client_info, date,seller,refe_quote,concepts, total_amount
+                #numero, previous_cotization_detail)
+            st.download_button(
+                label="Download Quotation PDF",
+                data=pdf_reg,
+                file_name=f"Quotation_{numero}.pdf",
+                mime="application/pdf" # PENDIENTE
+            )
     else:
         st.info("Pick one quotation number to see details")
 
