@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 from fpdf import FPDF
+=======
+from fpdf import FPDF, import_page
+>>>>>>> Stashed changes
 import os   
 
 def generate_pdf(cotiz_number, client_info, date,seller,refe_quote,concepts, total_amount):

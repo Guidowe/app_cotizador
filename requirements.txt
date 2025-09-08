@@ -5,3 +5,5 @@ pandas
 streamlit_autorefresh
 streamlit_option_menu
 openpyxl
+yaml
+streamlit_authenticator==0.4.2
