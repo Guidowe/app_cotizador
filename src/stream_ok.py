@@ -7,8 +7,8 @@ import pandas as pd
 from streamlit_autorefresh import st_autorefresh
 from streamlit_option_menu import option_menu
 import streamlit_authenticator as stauth
-import yaml
-from yaml.loader import SafeLoader
+#import yaml
+#from yaml.loader import SafeLoader
 
 st.set_page_config(page_title="DGM quotes", 
                    page_icon="📄", 
@@ -16,15 +16,15 @@ st.set_page_config(page_title="DGM quotes",
 refresh_interval_ms = 60 * 1000  # 30 seconds in milliseconds
 count = st_autorefresh(interval=refresh_interval_ms, limit=None, key="auto-refresh")
 
-with open('config.yaml') as file:
-    config = yaml.load(file, Loader=SafeLoader)
+#with open('config.yaml') as file:
+#    config = yaml.load(file, Loader=SafeLoader)
 
-authenticator = stauth.Authenticate(
-    config['credentials'],
-    config['cookie']['name'],
-    config['cookie']['key'],
-    config['cookie']['expiry_days']
-)
+#authenticator = stauth.Authenticate(
+#    config['credentials'],
+#    config['cookie']['name'],
+#    config['cookie']['key'],
+#    config['cookie']['expiry_days']
+#)
 # Hardcoded credentials (store securely in production!)
 USERNAMES = ["admin"]
 PASSWORDS = ["admin"]
