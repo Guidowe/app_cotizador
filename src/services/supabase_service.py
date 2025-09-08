@@ -75,3 +75,8 @@ def retrieve_clients():
     clients_supabase = supabase.table("clients").select("*").execute()
     clients = pd.DataFrame(clients_supabase.data)
     return clients
+
+def retrieve_concepts():
+    concepts_supabase = supabase.table("services").select("*").execute()
+    concepts = pd.DataFrame(concepts_supabase.data)
+    return concepts
