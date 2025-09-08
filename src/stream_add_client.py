@@ -20,15 +20,7 @@ def show_page_add_client():
                 st.error("Please complete all fields")
     with col2:
         existing_clients = retrieve_clients()
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
         st.title("Existing Clients")
-=======
-        st.title("Existent Clients")
->>>>>>> Stashed changes
-=======
-        st.title("Existent Clients")
->>>>>>> Stashed changes
         st.dataframe(existing_clients)
 
 if __name__ == "__main__":
