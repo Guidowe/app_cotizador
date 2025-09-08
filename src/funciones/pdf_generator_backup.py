@@ -1,5 +1,9 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 from fpdf import FPDF
+=======
+from fpdf import FPDF, import_page
+>>>>>>> Stashed changes
 =======
 from fpdf import FPDF, import_page
 >>>>>>> Stashed changes

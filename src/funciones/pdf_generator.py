@@ -75,4 +75,4 @@ def generate_pdf(cotiz_number, client_info, date,seller,refe_quote,concepts, tot
     #pdf.cell(0, 8, "By DIEGO AGUIRRE", ln=True)
     #pdf.cell(0, 8, "CEO DGM FLORIDA", ln=True)
 
-    return pdf.output(dest='S').encode('latin1')  # Return PDF as bytes
+    return pdf.output(dest='S').decode('latin1')  # Return PDF as bytes

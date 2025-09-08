@@ -22,7 +22,11 @@ def show_page_add_concept():
                 st.error("Please complete all fields")
     with col2:
         existing_concepts = retrieve_concepts()
+<<<<<<< Updated upstream
         st.title("Existing Concepts")
+=======
+        st.title("Existent Concepts")
+>>>>>>> Stashed changes
         st.dataframe(existing_concepts)
 
 if __name__ == "__main__":
