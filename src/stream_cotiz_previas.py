@@ -14,9 +14,9 @@ def show_page_cotiz_prev():
     #quotations_available = cotizaciones_previas["quotation"].unique().tolist()
     numero = st.text_input("Pick quotation by number")
     if not numero.strip() == "":
+        previous_cotization_detail = get_previous_cotizations_detail(numero)
         df_previous_cot= previous_cotization_detail[["quotation","client","date","type","Amount","description"]]
         st.dataframe(df_previous_cot)
-        previous_cotization_detail = get_previous_cotizations_detail(numero)
         client_info = previous_cotization_detail.client.values[0]
         date = previous_cotization_detail.date.values[0]
         seller = previous_cotization_detail.seller.values[0]
