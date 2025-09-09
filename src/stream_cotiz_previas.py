@@ -15,11 +15,10 @@ def show_page_cotiz_prev():
     numero = st.text_input("Pick quotation by number")
     if not numero.strip() == "":
         previous_cotization_detail = get_previous_cotizations_detail(numero)
+        previous_cotization_detail.client.values[0]
         st.dataframe(previous_cotization_detail[["quotation","client","date","type","Amount","description"]])
         if st.button("PENDIENTE: Regenerate PDF"):
-            #pdf_reg = pdf_generator.generate_pdf(
-                #client_info, date,seller,refe_quote,concepts, total_amount
-                #numero, previous_cotization_detail)
+            #pdf_reg = pdf_generator.generate_pdf(numero, client_info, date,seller,refe_quote,concepts, total_amount)
             st.download_button(
                 label="Download Quotation PDF",
                 data=pdf_reg,
