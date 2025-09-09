@@ -22,7 +22,7 @@ def show_page_cotiz_prev():
         seller = previous_cotization_detail.seller.values[0]
         refe_quote = previous_cotization_detail.reference_quote.values[0]
         concepts = df_previous_cot[["type", "Amount", "description"]]
-        if st.button("PENDIENTE: Regenerate PDF"):
+        if st.button("Regenerate PDF"):
             pdf_reg = pdf_generator.generate_pdf(numero, client_info, date,seller,refe_quote,concepts, total_amount=0)
             st.download_button(
                 label="Download Quotation PDF",
