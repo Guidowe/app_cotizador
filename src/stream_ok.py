@@ -10,7 +10,7 @@ import streamlit_authenticator as stauth
 #import yaml
 #from yaml.loader import SafeLoader
 
-st.set_page_config(page_title="DGM quotes", 
+st.set_page_config(page_title="Quotation System", 
                    page_icon="📄", 
                    layout="wide")
 refresh_interval_ms = 60 * 1000  # 30 seconds in milliseconds
@@ -52,14 +52,14 @@ col1, col2 = st.columns([7, 1])
 with col1:
         st.markdown(
         """
-        <div style="background-color:#43b02a;padding:20px 10px 10px 10px;border-radius:8px;">
-            <h1 style="color:white;margin-bottom:0;">DGM - Quotation System</h1>
+        <div style="background-color:#e8f2fc;padding:20px 10px 10px 10px;border-radius:8px;">
+            <h1 style="color:black;margin-bottom:0;">Quotation System</h1>
         </div>
         """,
         unsafe_allow_html=True
         )
 with col2:
-    st.image("src/img/logo_dgm.jpg", use_container_width =True)
+    st.image("src/img/cotizar.png", use_container_width =True)
 
 st.markdown(
     """
@@ -79,16 +79,16 @@ with col3:
                 orientation="horizontal",
                 styles={
                 "container": {"padding": "0!important", "background-color": "#B4A7A7F4"},
-                "icon": {"color": "white", "font-size": "18px"},
+                "icon": {"color": "black", "font-size": "18px"},
                 "nav-link": {
                 "font-size": "18px",
                 "text-align": "center",
                 "margin": "0px",
-                "color": "white",
+                "color": "black",
             },
             "nav-link-selected": {
-                "background-color": "#43b02a",
-                "color": "white",
+                "background-color": "#e8f2fc",
+                "color": "black",
             },
         })
 

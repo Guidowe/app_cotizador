@@ -4,9 +4,9 @@ import os
 def generate_pdf(cotiz_number, client_info, date,seller,refe_quote,concepts, total_amount):
     pdf = FPDF()
     pdf.add_page()
-    logo_path = os.path.join(os.path.dirname(__file__), "../img/membrete_grande.jpg")
+    logo_path = os.path.join(os.path.dirname(__file__), "../img/cotizar.png")
     if os.path.exists(logo_path):
-        pdf.image(logo_path, x=10, y=8, w=120, h=30) #10cm x 2cm
+        pdf.image(logo_path, x=10, y=8, w=30, h=30) #10cm x 2cm
     # Add "Quotation" info at the same height, aligned right
     pdf.set_xy(115, 10)  # Adjust x for right alignment (A4 width is 210mm)
     pdf.set_font("Arial", "B", 16)
@@ -69,10 +69,10 @@ def generate_pdf(cotiz_number, client_info, date,seller,refe_quote,concepts, tot
     pdf.set_font("Arial", "B", 12)
     #pdf.cell(0, 8, "Signature:", ln=True)
     #pdf.set_font("Arial", "", 12)
-    frima_path = os.path.join(os.path.dirname(__file__), "../img/firma_grande.jpg")
-    if os.path.exists(frima_path):
-        pdf.image(frima_path, w=90, h=60)
-    #pdf.cell(0, 8, "By DIEGO AGUIRRE", ln=True)
-    #pdf.cell(0, 8, "CEO DGM FLORIDA", ln=True)
+    #frima_path = os.path.join(os.path.dirname(__file__), "../img/firma_grande.jpg")
+    #if os.path.exists(frima_path):
+    #    pdf.image(frima_path, w=90, h=60)
+    pdf.cell(0, 8, "By JUAN PEREZ", ln=True)
+    pdf.cell(0, 8, "CEO Libromatic", ln=True)
 
     return pdf.output(dest='S').encode('latin1')  # Return PDF as bytes
